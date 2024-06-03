@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MINISHELL_PATH="../minishell"
+MINISHELL_PATH="../../minishell"
 
 # Run a specific test if the file name was specified
 
@@ -19,12 +19,13 @@ if [[ $1 ]]; then
 		$1
 	)
 fi
+
 if [[ $1 == "mandatory" || !$1 ]]; then
 	test_lists=(
 		"redirects"
 		"pipes"
 		"builtins"
-		"extras"
+		"command"
 		"var"
 		"syntax"
 	)
@@ -33,11 +34,11 @@ fi
 if [[ $1 == "bonus" ]]; then
 	test_lists=(
 		"redirects_bonus"
-		"bonus"
 		"builtins_bonus"
 		"var_bonus"
-		"wildcards"
 		"syntax_bonus"
+		"bonus"
+		"wildcards"
 	)
 	touch '!'
 	touch ')'
@@ -50,17 +51,18 @@ fi
 if [[ $1 == "all" ]]; then
 	test_lists=(
 		"redirects"
+		"redirects_bonus"
 		"pipes"
 		"builtins"
-		"extras"
-		"redirects_bonus"
-		"bonus"
 		"builtins_bonus"
+		"command"
 		"var"
 		"var_bonus"
-		"wildcards"
 		"syntax"
 		"syntax_bonus"
+		"bonus"
+		"wildcards"
+		"not_required"
 	)
 	touch '!'
 	touch ')'
@@ -68,6 +70,12 @@ if [[ $1 == "all" ]]; then
 	touch '*'
 	touch '8'
 	touch 'b'
+fi
+
+if [[ $1 == "not_required" ]]; then
+	test_lists=(
+		"not_required"
+	)
 fi
 
 BOLD="\e[1m"
@@ -125,6 +133,8 @@ for testfile in ${test_lists[*]}; do
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)
 
+		echo -e "$teste" | $MINISHELL_PATH 2> /dev/null 1>/dev/null
+		MINI_EXIT_CODE=$(echo $?)
 		printf $YELLOW
 		printf "Test %3s: " $i
 		if [[ "$MINI_OUTPUT" == "$BASH_OUTPUT" && "$MINI_EXIT_CODE" == "$BASH_EXIT_CODE" && -z "$OUTFILES_DIFF" ]]; then
