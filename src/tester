@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MINISHELL_PATH="../../minishell"
+MINISHELL_PATH="../minishell"
 
 # Run a specific test if the file name was specified
 
@@ -16,11 +16,11 @@ fi
 
 if [[ $1 ]]; then
 	test_lists=(
-		$1
+		"$1"
 	)
 fi
 
-if [[ $1 == "mandatory" || !$1 ]]; then
+if [[ $1 == "mandatory" || $1 == "" ]]; then
 	test_lists=(
 		"redirects"
 		"pipes"
@@ -39,6 +39,7 @@ if [[ $1 == "bonus" ]]; then
 		"syntax_bonus"
 		"bonus"
 		"wildcards"
+		"mix_bonus"
 	)
 	touch '!'
 	touch ')'
@@ -63,6 +64,8 @@ if [[ $1 == "all" ]]; then
 		"bonus"
 		"wildcards"
 		"not_required"
+		"not_required_bonus"
+		"mix_bonus"
 	)
 	touch '!'
 	touch ')'
@@ -75,6 +78,7 @@ fi
 if [[ $1 == "not_required" ]]; then
 	test_lists=(
 		"not_required"
+		"not_required_bonus"
 	)
 fi
 
