@@ -5,6 +5,7 @@ echo hello'world'
 echo hello""world
 echo ''
 echo ""
+echo "" HELLO_WORLD
 echo "$PWD"
 echo '$PWD'
 echo "aspas ->'"
