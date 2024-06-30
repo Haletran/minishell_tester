@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MINISHELL_PATH="../minishell"
+MINISHELL_PATH="../../minishell"
 
 # Run a specific test if the file name was specified
 
@@ -133,7 +133,7 @@ for testfile in ${test_lists[*]}; do
 		BASH_OUTPUT=$(echo -e "$teste" | bash 2> /dev/null)
 		BASH_EXIT_CODE=$(echo $?)
 		BASH_OUTFILES=$(cp ./outfiles/* ./bash_outfiles &>/dev/null)
-		BASH_ERROR_MSG=$(trap "" PIPE && echo "$teste" | bash 2>&1 > /dev/null | grep -o '[^:]*$')
+		BASH_ERROR_MSG=$(trap "" PIPE && echo "$teste" | bash 2>&1 > /dev/null | grep -o '[^:]*$' | sed "s# \`$teste'##")
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)
 
