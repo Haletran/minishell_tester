@@ -4,6 +4,7 @@ echo 'hello world'
 echo hello'world'
 echo hello""world
 echo ''
+echo ""
 echo "$PWD"
 echo '$PWD'
 echo "aspas ->'"
@@ -45,6 +46,9 @@ export HELLO=123 A
 export HELLO="123 A-"
 export hello world
 export HELLO-=123
+export 123=qweqwe
+export test2=hfdhl
+export test+=qwe
 export =
 export 123
 export | sort | grep -v SHLVL | grep -v "declare -x _" | grep -v "PS.=" | wc -l
