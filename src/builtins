@@ -40,6 +40,7 @@ export HELLO-=123
 export 123=qweqwe
 export test2=hfdhl
 export test+=qwe
+export a+=
 export =
 export 123
 export | sort | grep -v SHLVL | grep -v "declare -x _" | grep -v "PS.=" | wc -l
