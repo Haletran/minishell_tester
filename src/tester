@@ -27,6 +27,7 @@ if [[ $1 == "mandatory" || $1 == "" ]]; then
 		"builtins"
 		"command"
 		"var"
+		"quotes"
 		"syntax"
 	)
 fi
