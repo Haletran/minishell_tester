@@ -4,3 +4,4 @@ cat minishell.h | grep ");"$
 export GHOST=123 | env | grep GHOST
 cat /dev/urandom | head -1 | wc -l
 ls | ls
+ls | cat
