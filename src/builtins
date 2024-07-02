@@ -40,6 +40,7 @@ export HELLO-=123
 export 123=qweqwe
 export test2=hfdhl
 export test+=qwe
+export test+=123
 export a+=
 export =
 export 123
