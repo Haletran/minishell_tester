@@ -35,6 +35,7 @@ export HELLO=123
 export A-
 export HELLO=123 A
 export HELLO="123 A-"
+export test==
 export hello world
 export HELLO-=123
 export 123=qweqwe
